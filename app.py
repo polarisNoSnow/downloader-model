@@ -192,7 +192,6 @@ class MainWindow(QMainWindow):
         self.source_combo = QComboBox()
         self.source_combo.addItem("HF Mirror (国内推荐)", "https://hf-mirror.com/")
         self.source_combo.addItem("HuggingFace 官方", "https://huggingface.co/")
-        self.source_combo.addItem("ModelScope", "https://www.modelscope.cn/")
         self.source_combo.setStyleSheet(self._get_combo_style())
         self.source_combo.setMinimumHeight(36)
         source_layout.addWidget(source_label)
