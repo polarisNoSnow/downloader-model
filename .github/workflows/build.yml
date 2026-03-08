@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements.txt
       
       - name: Build with PyInstaller
-        run: pyinstaller --onefile --windowed --name "HFDownloader" app.py
+        run: pyinstaller --onefile --windowed --name "HFDownloader-${{ github.ref_name }}-${{ matrix.os }}" app.py
       
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -50,6 +50,6 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: artifacts/**/*
+          files: artifacts/**/HFDownloader-${{ github.ref_name }}-*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
