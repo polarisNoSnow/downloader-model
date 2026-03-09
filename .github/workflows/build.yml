@@ -20,7 +20,9 @@ jobs:
           python-version: '3.10'
       
       - name: Install dependencies
-        run: pip install -r requirements.txt   # 包含 pyinstaller 版本
+        run: |
+          pip install pyinstaller
+          pip install -r requirements.txt
       
       - name: Build with PyInstaller
         run: pyinstaller --onefile --windowed --name "HFDownloader-${{ github.ref_name }}-${{ matrix.os }}" app.py
@@ -42,7 +44,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/download-artifact@v4
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
         with:
           path: artifacts
 
